@@ -1,0 +1,8 @@
+echo '{"user":"stedolan", "projects": ["jq", "wikiflow"]}' | jq '[.user, .projects[]]'
+echo '[1,2,3]' | jq '[ .[] | . * 2]'
+echo '{"user":"stedolan", "titles": ["JQ Primer", "More JQ"]}' | jq '{user, title: .titles[]}'
+echo '{"user":"stedolan", "titles": ["JQ Primer", "More JQ"]}' | jq '[{user, title: .titles[]}]'
+echo '{"user":"stedolan", "titles": ["JQ Primer", "More JQ"]}' | jq '"f o o" as $foo | [{user, title: .titles[], foo_attr:$foo}]'
+echo '{"user":"stedolan", "titles": ["JQ Primer", "More JQ"]}' | jq '{(.user): .titles[]}'
+echo '[[[{"a":1}]]]' | jq '.. | .a?'
+echo '[[[[{"a":1}]]]]' | jq '.. | .a?'
